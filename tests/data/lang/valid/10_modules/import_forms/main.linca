@@ -1,0 +1,11 @@
+// Linca test case | spec 0.1 | section 10
+// Both import forms: a whole module (referred to by its last segment) and single items.
+
+import geo::places
+import people::{Person, Role}
+
+record Visit {
+  where: places::Address
+  who: Person
+  as: Role
+}

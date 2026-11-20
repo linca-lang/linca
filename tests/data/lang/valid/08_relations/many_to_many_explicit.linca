@@ -1,0 +1,20 @@
+// Linca test case | spec 0.1 | section 8
+// Many-to-many is an explicit join model with two one-to-many relations.
+
+model Post {
+  id: Uuid @primary
+  postTags: List<PostTag>
+}
+
+model Tag {
+  id: Uuid @primary
+  postTags: List<PostTag>
+}
+
+@primary(fields: [postId, tagId])
+model PostTag {
+  postId: Uuid
+  tagId: Uuid
+  post: Post @relation(fields: [postId], onDelete: Cascade)
+  tag: Tag @relation(fields: [tagId], onDelete: Cascade)
+}

@@ -1,0 +1,8 @@
+// Linca test case | spec 0.1 | section 10
+// Importing a module that does not exist.
+
+import nowhere::things    //~ E0704
+
+record Item {
+  name: String
+}

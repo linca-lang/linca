@@ -1,0 +1,20 @@
+// Linca test case | spec 0.1 | section 8
+// List on both sides: neither side holds a foreign key. Many-to-many needs a join model.
+
+model Post {
+  id: Uuid @primary
+  postTags: List<PostTag>
+}
+
+model Tag {
+  id: Uuid @primary
+  postTags: List<PostTag>
+}
+
+model PostTag {
+  id: Uuid @primary
+  postId: Uuid
+  tagId: Uuid
+  post: Post @relation(fields: [postId])
+  tag: Tag @relation(fields: [tagId])
+}

@@ -1,0 +1,13 @@
+// Linca test case | spec 0.1 | section 8
+// An optional relation needs a nullable foreign key, and the reverse.
+
+model User {
+  id: Uuid @primary
+  posts: List<Post>
+}
+
+model Post {
+  id: Uuid @primary
+  authorId: Uuid
+  author: User? @relation(fields: [authorId])    //~ E0503
+}

@@ -1,0 +1,15 @@
+// Linca test case | spec 0.1 | section 5.4
+// A foreign key must have the same nominal type as the key it references.
+
+type UserId = Uuid
+
+model User {
+  id: UserId @primary
+  posts: List<Post>
+}
+
+model Post {
+  id: Uuid @primary
+  authorId: Uuid    //~ E0220
+  author: User @relation(fields: [authorId])
+}

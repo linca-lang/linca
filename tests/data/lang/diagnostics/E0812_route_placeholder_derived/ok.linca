@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 17.6
+// A placeholder in @route needs that parameter also in an operation with a derived binding. One diagnostic per operation, at its name.
+
+@route("/shops/{shopId}")
+service Products {
+  close(shopId: Int)
+}

@@ -1,0 +1,6 @@
+// Linca test case | spec 0.1 | section 3.3
+// A keyword cannot name an operation. No W0001 is expected: the name is rejected before naming conventions are checked.
+
+service Types {
+  fetchType() -> String
+}

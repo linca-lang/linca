@@ -1,0 +1,13 @@
+// Linca test case | spec 0.1 | section 7.4
+// Attribute sets expand to their attributes; a set may contain another set.
+
+attribute id on field = [@primary, @default(uuid())]
+
+attribute text on field = [@length(max: 200)]
+attribute email on field = [@text, @format(Email)]
+
+model User {
+  id: Uuid @id
+  email: String @email @unique
+  bio: String? @text
+}

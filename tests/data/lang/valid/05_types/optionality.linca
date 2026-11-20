@@ -1,0 +1,14 @@
+// Linca test case | spec 0.1 | section 5.3
+// Nullable fields and nullable elements. The collection itself is never nullable.
+
+record Profile {
+  name: String
+  nickname: String?
+  tags: List<String?>
+  limits: Map<String, Int?>
+}
+
+// After `partial` every field may be omitted, and nullability is unchanged:
+//   name      optional to provide, not nullable
+//   nickname  optional to provide, nullable
+view ProfilePatch = Profile partial

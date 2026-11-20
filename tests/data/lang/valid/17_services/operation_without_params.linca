@@ -1,0 +1,6 @@
+// Linca test case | spec 0.1 | section 17.2
+// An operation with no parameters.
+
+service Clock {
+  now() -> DateTime
+}

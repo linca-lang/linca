@@ -1,0 +1,6 @@
+// Linca test case | spec 0.1 | section 7.2
+// Lookbehind is outside the common regex subset.
+
+record Code {
+  value: String @pattern("(?<=a)b+")    //~ W0405
+}

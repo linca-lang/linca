@@ -1,0 +1,9 @@
+// Linca test case | spec 0.1 | section 10
+// Import cycles between modules are allowed.
+
+import posts::{Post}
+
+model User {
+  id: Uuid @primary
+  posts: List<Post>
+}

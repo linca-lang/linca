@@ -1,0 +1,10 @@
+// Linca test case | spec 0.1 | section 17.3
+// A model cannot be a parameter type also inside Map.
+
+model User {
+  id: Uuid @primary
+}
+
+service Users {
+  save(users: Map<String, User>)    //~ E0806
+}

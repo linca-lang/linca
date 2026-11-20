@@ -1,0 +1,11 @@
+// Linca test case | spec 0.1 | section 17.7
+// @readonly on an operation with a derived binding; on @get it changes nothing.
+
+service Stats {
+  @readonly
+  countOrders() -> Int
+
+  @get("/orders")
+  @readonly
+  listOrders() -> List<Int>
+}

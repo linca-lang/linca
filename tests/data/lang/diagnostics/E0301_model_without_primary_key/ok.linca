@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 6.1
+// A model must have a primary key.
+
+model User {
+  id: Uuid @primary
+  email: String
+}

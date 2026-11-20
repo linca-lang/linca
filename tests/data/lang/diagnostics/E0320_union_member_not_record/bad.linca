@@ -1,0 +1,13 @@
+// Linca test case | spec 0.1 | section 6.5
+// Union members must be records.
+
+enum Role {
+  Admin
+  Member
+}
+
+record Card {
+  last4: String
+}
+
+union Payment = Card | Role    //~ E0320

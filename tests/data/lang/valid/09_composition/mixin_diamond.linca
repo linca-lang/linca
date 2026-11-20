@@ -1,0 +1,19 @@
+// Linca test case | spec 0.1 | section 9.1
+// A mixin reached by several paths is copied once, at its first occurrence.
+
+mixin Authored {
+  createdBy: String
+}
+
+mixin Timestamps with Authored {
+  createdAt: DateTime
+}
+
+mixin SoftDelete with Authored {
+  deletedAt: DateTime?
+}
+
+// field order: createdBy, createdAt, deletedAt, title  (createdBy only once)
+record Document with Timestamps, SoftDelete {
+  title: String
+}

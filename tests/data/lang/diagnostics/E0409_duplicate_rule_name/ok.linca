@@ -1,0 +1,9 @@
+// Linca test case | spec 0.1 | section 7.2
+// Rule names are unique within a declaration.
+
+@rule("endAfterStart")
+@rule("notInPast")
+record Range {
+  startsAt: DateTime
+  endsAt: DateTime
+}

@@ -1,0 +1,6 @@
+// Linca test case | spec 0.1 | section 7.7
+// A string literal where an Int is expected.
+
+record Person {
+  name: String @length(max: 10)
+}

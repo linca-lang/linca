@@ -1,0 +1,20 @@
+// Linca test case | spec 0.1 | section 5.5
+// Domain types are distinct nominal types; attributes on the declaration apply to every field of that type.
+
+type UserId = Uuid
+type OrderId = Uuid
+
+@decimal(12, 2) @min(0)
+type Money = Decimal
+
+/// URL-safe identifier.
+@length(min: 1, max: 64) @pattern("[a-z0-9-]+")
+type Slug = String
+
+model Product {
+  id: OrderId @primary
+  ownerId: UserId
+  slug: Slug @unique
+  price: Money           // no @decimal here: it comes from the type
+  discount: Money?
+}

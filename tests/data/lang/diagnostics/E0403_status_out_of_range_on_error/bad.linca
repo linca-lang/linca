@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 17.5
+// @status on an error is in the range 400-599.
+
+@status(200)    //~ E0403
+error NotFound {
+  resource: String
+}

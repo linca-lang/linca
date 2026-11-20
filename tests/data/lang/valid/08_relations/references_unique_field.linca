@@ -1,0 +1,14 @@
+// Linca test case | spec 0.1 | section 8
+// references may name a unique field instead of the primary key.
+
+model Country {
+  id: Uuid @primary
+  code: String @unique @length(2)
+  cities: List<City>
+}
+
+model City {
+  id: Uuid @primary
+  countryCode: String
+  country: Country @relation(fields: [countryCode], references: [code])
+}

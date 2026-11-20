@@ -1,0 +1,12 @@
+// Linca test case | spec 0.1 | section 17.8
+// A result of a sensitive type needs @allowSensitive on the operation.
+
+record Account {
+  name: String
+  passwordHash: String @sensitive
+}
+
+service Accounts {
+  @allowSensitive
+  getAccount() -> Account
+}

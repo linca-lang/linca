@@ -1,0 +1,12 @@
+// Linca test case | spec 0.1 | section 6.5
+// Two members with the same discriminator value.
+
+record Card {
+  last4: String
+}
+
+record Transfer {
+  iban: String
+}
+
+union Payment = Card as "pay" | Transfer as "pay"    //~ E0322

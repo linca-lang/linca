@@ -1,0 +1,14 @@
+// Linca test case | spec 0.1 | section 6.5
+// The discriminator name (default: kind) collides with a member field.
+
+record Card {
+  kind: String
+  last4: String
+}
+
+record Transfer {
+  iban: String
+}
+
+@discriminator("method")
+union Payment = Card | Transfer

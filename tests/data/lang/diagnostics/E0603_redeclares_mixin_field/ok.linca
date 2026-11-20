@@ -1,0 +1,10 @@
+// Linca test case | spec 0.1 | section 9.1
+// A declaration cannot redeclare a field it gets from a mixin.
+
+mixin Named {
+  name: String
+}
+
+record Item with Named {
+  price: Int
+}

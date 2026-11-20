@@ -1,0 +1,6 @@
+// Linca test case | spec 0.1 | section 17.8
+// An error cannot have a sensitive field, and there is no way to allow it.
+
+error BadLogin {
+  password: String
+}

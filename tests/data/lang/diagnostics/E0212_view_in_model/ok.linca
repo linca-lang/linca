@@ -1,0 +1,14 @@
+// Linca test case | spec 0.1 | section 5.6
+// A model field cannot have a view type.
+
+record Address {
+  street: String
+  city: String
+}
+
+view ShortAddress = Address only { city }
+
+model User {
+  id: Uuid @primary
+  address: Address
+}

@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 7.5
+// PENDING: the passing twin of W0401. Needs the `prisma` plugin configured; then this file has no diagnostics.
+
+model User {
+  id: Uuid @primary
+  email: String @prisma.map("e_mail")
+}

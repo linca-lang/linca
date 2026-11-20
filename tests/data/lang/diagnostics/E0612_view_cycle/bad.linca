@@ -1,0 +1,5 @@
+// Linca test case | spec 0.1 | section 9.2
+// Views that derive from each other.
+
+view First = Second partial    //~ E0612
+view Second = First partial

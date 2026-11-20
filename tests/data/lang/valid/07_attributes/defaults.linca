@@ -1,0 +1,19 @@
+// Linca test case | spec 0.1 | section 7.7
+// Literal defaults checked against the field type.
+
+enum Theme { Light Dark }
+
+model Settings {
+  id: Uuid @primary
+  title: String @default("untitled")
+  retries: Int @default(3)
+  ratio: Float @default(0.5)
+  wholeRatio: Float @default(1)
+  budget: Decimal @decimal(12, 2) @default(100)
+  enabled: Bool @default(true)
+  theme: Theme @default(Light)
+  note: String? @default(null)
+  startsOn: Date @default("2026-01-01")
+  syncedAt: DateTime @default("2026-01-01T00:00:00Z")
+  ownerId: Uuid @default("00000000-0000-0000-0000-000000000000")
+}

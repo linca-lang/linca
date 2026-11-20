@@ -1,0 +1,6 @@
+// Linca test case | spec 0.1 | section 5.1
+// A Decimal field needs @decimal on the field or on its type.
+
+record Price {
+  amount: Decimal    //~ E0222
+}

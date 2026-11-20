@@ -1,0 +1,16 @@
+// Linca test case | spec 0.1 | section 6.5
+// Every member must contain the fields of the required mixin.
+
+mixin PaymentBase {
+  amount: Int
+}
+
+record Card with PaymentBase {
+  last4: String
+}
+
+record Transfer {
+  iban: String
+}
+
+union Payment requires PaymentBase = Card | Transfer    //~ E0321

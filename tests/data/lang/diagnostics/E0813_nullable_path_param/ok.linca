@@ -1,0 +1,9 @@
+// Linca test case | spec 0.1 | section 17.5
+// A path parameter cannot be nullable.
+
+service Items {
+  @get("/{id}")
+  getItem(
+    id: Int,
+  ) -> String
+}

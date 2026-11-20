@@ -1,0 +1,12 @@
+// Linca test case | spec 0.1 | section 17.4
+// An error cannot be a union member.
+
+record Item {
+  name: String
+}
+
+error NotFound {
+  resource: String
+}
+
+union Result = Item | NotFound    //~ E0320

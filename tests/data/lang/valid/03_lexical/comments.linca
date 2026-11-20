@@ -1,0 +1,15 @@
+// Linca test case | spec 0.1 | section 3.1
+// All three comment forms. Doc comments become @doc on the next item.
+
+// A line comment.
+
+/* A block comment
+   over two lines. */
+
+/// A point on a plane.
+/// Second doc line, joined to the first with a newline.
+record Point {
+  /// Horizontal position.
+  x: Int   // trailing line comment
+  y: Int   /* trailing block comment */
+}

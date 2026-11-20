@@ -1,0 +1,15 @@
+// Linca test case | spec 0.1 | section 8
+// references must be the primary key or a unique set of fields.
+
+model User {
+  id: Uuid @primary
+  email: String @unique
+  name: String
+  posts: List<Post>
+}
+
+model Post {
+  id: Uuid @primary
+  authorName: String
+  author: User @relation(fields: [authorName], references: [name])    //~ E0506
+}

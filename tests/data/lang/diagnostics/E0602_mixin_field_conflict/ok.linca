@@ -1,0 +1,14 @@
+// Linca test case | spec 0.1 | section 9.1
+// Two mixins bring a field with the same name.
+
+mixin Named {
+  name: String
+}
+
+mixin Labeled {
+  label: String
+}
+
+record Item with Named, Labeled {
+  price: Int
+}

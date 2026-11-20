@@ -1,0 +1,9 @@
+// Linca test case | spec 0.1 | section 4
+// Newlines are not significant: several fields or variants may share a line.
+
+enum Role { Admin Member Guest }
+
+record Point { x: Int y: Int }
+
+record Segment { from: Point
+  to: Point }

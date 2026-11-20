@@ -1,0 +1,9 @@
+// Linca test case | spec 0.1 | section 17.3
+// The default of a parameter is a literal or an enum variant, never a value generator.
+
+service Pages {
+  @get("/pages")
+  list(
+    page: Int @default(1),
+  ) -> String
+}

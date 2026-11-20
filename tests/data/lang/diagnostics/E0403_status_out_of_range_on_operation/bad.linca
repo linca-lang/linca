@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 17.5
+// @status on an operation is in the range 200-299.
+
+service Jobs {
+  @status(300)    //~ E0403
+  start()
+}

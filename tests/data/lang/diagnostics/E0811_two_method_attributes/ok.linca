@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 17.5
+// An operation has at most one method attribute.
+
+service Checks {
+  @get("/a")
+  check()
+}

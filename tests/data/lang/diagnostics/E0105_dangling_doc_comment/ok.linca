@@ -1,0 +1,8 @@
+// Linca test case | spec 0.1 | section 3.1
+// A doc comment with nothing after it to attach to.
+
+record Point {
+  x: Int
+  /// Vertical position.
+  y: Int
+}

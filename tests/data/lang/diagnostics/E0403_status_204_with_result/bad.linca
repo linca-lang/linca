@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 17.5
+// An operation with a result cannot have status 204.
+
+service Jobs {
+  @status(204)    //~ E0403
+  state() -> String
+}

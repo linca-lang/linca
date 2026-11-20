@@ -1,0 +1,10 @@
+// Linca test case | spec 0.1 | section 17.2
+// An error is listed once in throws.
+
+error NotFound {
+  resource: String
+}
+
+service Docs {
+  open() throws NotFound
+}

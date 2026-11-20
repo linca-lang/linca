@@ -1,0 +1,14 @@
+// Linca test case | spec 0.1 | section 17.8
+// An error field is sensitive when its type contains a record with a sensitive field, at any depth (Section 9.2).
+
+record Credentials {
+  password: String @sensitive
+}
+
+record Wrapper {
+  credentials: Credentials
+}
+
+error BadLogin {
+  details: Wrapper    //~ E0807
+}

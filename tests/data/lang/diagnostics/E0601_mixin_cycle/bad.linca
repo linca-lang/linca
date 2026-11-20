@@ -1,0 +1,10 @@
+// Linca test case | spec 0.1 | section 9.1
+// Mixins that use each other.
+
+mixin Named with Dated {    //~ E0601
+  name: String
+}
+
+mixin Dated with Named {
+  createdAt: DateTime
+}

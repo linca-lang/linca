@@ -1,0 +1,20 @@
+// Linca test case | spec 0.1 | section 17.2
+// throws lists several errors; two of them may share a status.
+
+@status(404)
+error NotFound {
+  resource: String
+}
+
+@status(404)
+error Gone {
+  since: DateTime
+}
+
+error Conflict {
+  reason: String
+}
+
+service Docs {
+  open(id: Int) -> String throws NotFound, Gone, Conflict
+}

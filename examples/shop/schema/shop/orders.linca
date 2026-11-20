@@ -1,0 +1,25 @@
+// schema/shop/orders.linca
+import shop::common::{Timestamps, UserId, id}
+import shop::users::{User}
+
+record Address {
+  street: String
+  city: String
+}
+
+mixin PaymentBase { amount: Decimal @decimal(12, 2) }
+
+record CardPayment with PaymentBase { last4: String @length(4) }
+record BankTransfer with PaymentBase { iban: String }
+
+union Payment requires PaymentBase = CardPayment as "card" | BankTransfer as "bank_transfer"
+
+@index(fields: [userId, createdAt])
+model Order with Timestamps {
+  id: Uuid @id
+  userId: UserId   // Uuid here would be E0220
+  user: User @relation(fields: [userId], onDelete: Cascade)
+  shipping: Address @storage(columns)
+  payment: Payment
+  items: List<String>
+}

@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 6.4
+// Explicit enum values must all be strings or all be ints.
+
+enum Level {
+  Low = "low"
+  High = "high"
+}

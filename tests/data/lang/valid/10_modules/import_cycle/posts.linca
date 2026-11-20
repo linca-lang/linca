@@ -1,0 +1,10 @@
+// Linca test case | spec 0.1 | section 10
+// Import cycles between modules are allowed.
+
+import users::{User}
+
+model Post {
+  id: Uuid @primary
+  authorId: Uuid
+  author: User @relation(fields: [authorId])
+}

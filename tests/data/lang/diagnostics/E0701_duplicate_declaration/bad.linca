@@ -1,0 +1,10 @@
+// Linca test case | spec 0.1 | section 10
+// Two declarations with the same name in one module.
+
+record Item {
+  name: String
+}
+
+record Item {    //~ E0701
+  title: String
+}

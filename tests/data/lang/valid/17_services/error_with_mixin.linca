@@ -1,0 +1,15 @@
+// Linca test case | spec 0.1 | section 17.4
+// An error uses mixins with "with", as a record does.
+
+mixin Trace {
+  traceId: String
+}
+
+@status(500)
+error Failure with Trace {
+  message: String
+}
+
+service Jobs {
+  run() throws Failure
+}

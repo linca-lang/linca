@@ -1,0 +1,10 @@
+// Linca test case | spec 0.1 | section 17.5
+// Every placeholder names a parameter, and a parameter is named by one placeholder only.
+
+service Users {
+  @get("/{id}")    //~ E0812
+  getUser() -> String
+
+  @get("/{key}/{key}")    //~ E0812
+  twice(key: Int) -> String
+}

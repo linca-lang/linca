@@ -1,0 +1,16 @@
+// Linca test case | spec 0.1 | section 9.2
+// @allowSensitive lets a view contain sensitive fields, directly or through a nested record.
+
+record Credentials {
+  passwordHash: String @sensitive
+}
+
+record Account {
+  login: String
+  credentials: Credentials
+}
+
+@allowSensitive
+view AccountBackup = Account partial
+
+view AccountInfo = Account without { credentials }

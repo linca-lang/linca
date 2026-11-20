@@ -1,0 +1,9 @@
+// Linca test case | spec 0.1 | section 17.4
+// An error may have no fields.
+
+@status(401)
+error Unauthorized {}
+
+service Session {
+  check() throws Unauthorized
+}

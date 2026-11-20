@@ -1,0 +1,9 @@
+// Linca test case | spec 0.1 | section 9.2
+// Views that derive from each other.
+
+record Base {
+  name: String
+}
+
+view First = Base partial
+view Second = First without { name }

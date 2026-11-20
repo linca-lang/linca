@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 7.1
+// @sensitive is allowed on fields only.
+
+model User {
+  id: Uuid @primary
+  passwordHash: String @sensitive
+}

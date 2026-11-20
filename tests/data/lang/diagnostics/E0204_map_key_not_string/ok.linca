@@ -1,0 +1,6 @@
+// Linca test case | spec 0.1 | section 5.2
+// Map keys must be String.
+
+record Labels {
+  byId: Map<String, String>
+}

@@ -1,0 +1,16 @@
+// Linca test case | spec 0.1 | section 17.3
+// A parameter with @default is optional. The default is a literal or an enum variant; validation attributes apply to parameters.
+
+enum Order {
+  Asc
+  Desc
+}
+
+service Pages {
+  @get("/pages")
+  list(
+    page: Int @default(1) @min(1),
+    size: Int @default(20) @max(100),
+    order: Order @default(Asc),
+  ) -> String
+}

@@ -1,0 +1,13 @@
+// Linca test case | spec 0.1 | section 9.2
+// The sensitive check is transitive: a field whose record type has a sensitive field is sensitive.
+
+record Credentials {
+  passwordHash: String @sensitive
+}
+
+record Account {
+  login: String
+  credentials: Credentials
+}
+
+view AccountPatch = Account without { credentials } partial

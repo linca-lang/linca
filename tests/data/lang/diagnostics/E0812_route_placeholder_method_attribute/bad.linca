@@ -1,0 +1,8 @@
+// Linca test case | spec 0.1 | section 17.5
+// A placeholder in @route needs that parameter in every operation with a method attribute. One diagnostic per operation, at its name.
+
+@route("/shops/{shopId}")
+service Products {
+  @get("/{id}")
+  getProduct(id: Int) -> String    //~ E0812
+}

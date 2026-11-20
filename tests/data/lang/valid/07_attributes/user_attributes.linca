@@ -1,0 +1,22 @@
+// Linca test case | spec 0.1 | section 7.4
+// User attributes: parameters with defaults, enum and FieldRef parameters, repeatable attributes, several targets.
+
+enum PiiLevel { Low High }
+
+/// Personal data that needs protection.
+attribute pii(level: PiiLevel = High) on field
+
+repeatable attribute tag(name: String) on field, record
+
+attribute sortedBy(field: FieldRef, descending: Bool = false) on record
+
+attribute audited on model, record
+
+@audited
+@sortedBy(createdAt, descending: true)
+@tag("crm")
+record Contact {
+  email: String @pii
+  phone: String? @pii(Low) @tag("optional") @tag("contact")
+  createdAt: DateTime
+}

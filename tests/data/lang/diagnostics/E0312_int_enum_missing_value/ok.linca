@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 6.4
+// In an int enum every variant needs a value.
+
+enum Level {
+  Low = 1
+  High = 2
+}

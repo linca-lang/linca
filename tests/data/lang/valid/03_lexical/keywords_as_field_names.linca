@@ -1,0 +1,21 @@
+// Linca test case | spec 0.1 | section 3.3
+// Keywords are contextual: current and reserved keywords work as field names without escaping.
+
+record Event {
+  type: String
+  model: String
+  record: String
+  on: Bool
+  with: String?
+  only: Int
+  partial: Bool
+  as: String
+  import: String
+  private: Bool
+  service: String
+  for: String
+}
+
+// Keyword field names also work inside view operators.
+view EventKind = Event only { type, model }
+view EventRest = Event without { type, for }

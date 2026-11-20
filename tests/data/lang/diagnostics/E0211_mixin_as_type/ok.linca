@@ -1,0 +1,10 @@
+// Linca test case | spec 0.1 | section 5.6
+// A mixin is not a type.
+
+mixin Timestamps {
+  createdAt: DateTime
+}
+
+record Event with Timestamps {
+  name: String
+}

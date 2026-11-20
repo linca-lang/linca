@@ -1,0 +1,13 @@
+// Linca test case | spec 0.1 | section 8
+// The owning side holds the foreign key; the back-relation is a list.
+
+model User {
+  id: Uuid @primary
+  posts: List<Post>
+}
+
+model Post {
+  id: Uuid @primary
+  authorId: Uuid
+  author: User @relation(fields: [authorId])
+}

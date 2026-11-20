@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 17.5
+// A nullable query parameter is sent by omitting it.
+
+service Search {
+  @get("/search")
+  find(term: String?) -> String
+}

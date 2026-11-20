@@ -1,0 +1,44 @@
+// Linca test case | spec 0.1 | section 17.9
+// The service of Section 17.9, over the schema of Section 13.
+
+import shop::common::{UserId}
+import shop::users::{User, PublicUser, Role}
+
+view CreateUser = User only { email, role }
+view UpdateUser = CreateUser partial
+
+record UserPage {
+  items: List<PublicUser>
+  total: Int
+}
+
+@status(404)
+error NotFound { resource: String }
+
+@status(409)
+error EmailTaken { email: String }
+
+@route("/users")
+service Users {
+  @get
+  listUsers(
+    role: Role?,
+    page: Int @default(1) @min(1),
+    size: Int @default(20) @max(100),
+  ) -> UserPage
+
+  @get("/{id}")
+  getUser(id: UserId) -> PublicUser throws NotFound
+
+  @post @status(201)
+  createUser(input: CreateUser) -> PublicUser throws EmailTaken
+
+  @patch("/{id}")
+  updateUser(id: UserId, input: UpdateUser) -> PublicUser throws NotFound, EmailTaken
+
+  @delete("/{id}")
+  deleteUser(id: UserId) throws NotFound
+
+  /// No method attribute: the binding is derived.
+  resetPassword(email: String @format(Email))
+}

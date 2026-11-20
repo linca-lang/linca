@@ -1,0 +1,19 @@
+// Linca test case | spec 0.1 | section 6.4
+// String enums may mix variants with and without values; int enums give every variant a value.
+
+enum Role {
+  Admin
+  Member
+  Guest = "guest"
+}
+
+enum Priority {
+  Low = 1
+  Normal = 2
+  High = 3
+}
+
+record Task {
+  assigneeRole: Role
+  priority: Priority
+}

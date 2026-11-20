@@ -1,0 +1,8 @@
+// Linca test case | spec 0.1 | section 10
+// A local declaration and an imported item with the same name.
+
+import lib::{Item}    //~ E0702
+
+record Item {
+  name: String
+}

@@ -1,0 +1,6 @@
+// Linca test case | spec 0.1 | section 7.6
+// PENDING: needs a configured target that does not declare the `uuid7` capability.
+
+model Event {
+  id: Uuid @primary @default(uuid7())    //~ E0421
+}

@@ -1,0 +1,8 @@
+// Linca test case | spec 0.1 | section 7.1
+// Duplicates are counted after attribute sets are expanded.
+
+attribute id on field = [@primary, @default(uuid())]
+
+model Order {
+  id: Uuid @id @primary    //~ E0404
+}

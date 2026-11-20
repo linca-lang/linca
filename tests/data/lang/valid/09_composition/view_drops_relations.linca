@@ -1,0 +1,20 @@
+// Linca test case | spec 0.1 | section 9.2
+// Relation fields are not part of a view; foreign keys stay as plain fields.
+
+model User {
+  id: Uuid @primary
+  posts: List<Post>
+}
+
+model Post {
+  id: Uuid @primary
+  title: String
+  authorId: Uuid
+  author: User @relation(fields: [authorId])
+}
+
+// fields: id, title, authorId   (author is dropped)
+view PostSummary = Post without { title } + { excerpt: String }
+
+// fields: id   (posts is dropped)
+view UserRef = User partial

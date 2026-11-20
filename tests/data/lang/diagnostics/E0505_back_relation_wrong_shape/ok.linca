@@ -1,0 +1,13 @@
+// Linca test case | spec 0.1 | section 8
+// A unique foreign key makes the relation one-to-one, so the back-relation is Model?, not a list.
+
+model User {
+  id: Uuid @primary
+  profile: Profile?
+}
+
+model Profile {
+  id: Uuid @primary
+  userId: Uuid @unique
+  user: User @relation(fields: [userId])
+}

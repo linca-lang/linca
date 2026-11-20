@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 4
+// A field without the colon between name and type.
+
+record Point {
+  x: Int
+  y: Int
+}

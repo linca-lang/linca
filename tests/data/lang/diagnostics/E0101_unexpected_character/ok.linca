@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 3
+// A character that is not part of any token.
+
+record Point {
+  x: Int
+  y: Int
+}

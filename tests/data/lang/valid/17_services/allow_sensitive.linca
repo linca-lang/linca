@@ -1,0 +1,14 @@
+// Linca test case | spec 0.1 | section 17.8
+// @allowSensitive lets an operation return a sensitive type. A sensitive parameter needs nothing.
+
+record Account {
+  name: String
+  passwordHash: String @sensitive
+}
+
+service Admin {
+  @allowSensitive
+  dumpAccount() -> Account
+
+  register(account: Account)
+}

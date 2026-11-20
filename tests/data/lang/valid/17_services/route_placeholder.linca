@@ -1,0 +1,15 @@
+// Linca test case | spec 0.1 | section 17.5
+// A placeholder in @route needs that parameter in every operation that has a method attribute.
+
+record Product {
+  name: String
+}
+
+@route("/shops/{shopId}")
+service Products {
+  @get("/{id}")
+  getProduct(shopId: Int, id: Int) -> Product
+
+  @post
+  createProduct(shopId: Int, product: Product) -> Product
+}

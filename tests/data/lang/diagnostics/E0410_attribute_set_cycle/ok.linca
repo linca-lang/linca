@@ -1,0 +1,9 @@
+// Linca test case | spec 0.1 | section 7.4
+// Attribute sets that contain each other.
+
+attribute short on field = [@named]
+attribute named on field = [@length(max: 10)]
+
+record Person {
+  name: String @short
+}

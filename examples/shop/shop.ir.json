@@ -1,0 +1,1465 @@
+{
+  "irVersion": "0.1",
+  "languageVersion": "0.1",
+  "modules": [
+    {
+      "id": "shop::common",
+      "file": "shop/common.linca"
+    },
+    {
+      "id": "shop::orders",
+      "file": "shop/orders.linca"
+    },
+    {
+      "id": "shop::users",
+      "file": "shop/users.linca"
+    }
+  ],
+  "declarations": [
+    {
+      "kind": "mixin",
+      "id": "shop::common::Timestamps",
+      "module": "shop::common",
+      "name": {
+        "source": "Timestamps",
+        "words": [
+          "timestamps"
+        ]
+      },
+      "doc": null,
+      "mixins": [],
+      "fields": [
+        {
+          "name": {
+            "source": "createdAt",
+            "words": [
+              "created",
+              "at"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "scalar",
+            "name": "DateTime",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": {
+            "kind": "generated",
+            "generator": "now"
+          },
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "own"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/common.linca",
+            "line": 3,
+            "column": 3
+          }
+        },
+        {
+          "name": {
+            "source": "updatedAt",
+            "words": [
+              "updated",
+              "at"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "scalar",
+            "name": "DateTime",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": true,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "own"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/common.linca",
+            "line": 4,
+            "column": 3
+          }
+        }
+      ],
+      "attributes": [],
+      "span": {
+        "file": "shop/common.linca",
+        "line": 2,
+        "column": 7
+      }
+    },
+    {
+      "kind": "type",
+      "id": "shop::common::UserId",
+      "module": "shop::common",
+      "name": {
+        "source": "UserId",
+        "words": [
+          "user",
+          "id"
+        ]
+      },
+      "doc": null,
+      "base": "Uuid",
+      "constraints": {
+        "min": null,
+        "max": null,
+        "minLength": null,
+        "maxLength": null,
+        "pattern": null,
+        "format": null,
+        "decimal": null
+      },
+      "attributes": [],
+      "span": {
+        "file": "shop/common.linca",
+        "line": 7,
+        "column": 6
+      }
+    },
+    {
+      "kind": "record",
+      "id": "shop::orders::Address",
+      "module": "shop::orders",
+      "name": {
+        "source": "Address",
+        "words": [
+          "address"
+        ]
+      },
+      "doc": null,
+      "mixins": [],
+      "fields": [
+        {
+          "name": {
+            "source": "street",
+            "words": [
+              "street"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "scalar",
+            "name": "String",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "own"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/orders.linca",
+            "line": 6,
+            "column": 3
+          }
+        },
+        {
+          "name": {
+            "source": "city",
+            "words": [
+              "city"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "scalar",
+            "name": "String",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "own"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/orders.linca",
+            "line": 7,
+            "column": 3
+          }
+        }
+      ],
+      "rules": [],
+      "attributes": [],
+      "span": {
+        "file": "shop/orders.linca",
+        "line": 5,
+        "column": 8
+      }
+    },
+    {
+      "kind": "mixin",
+      "id": "shop::orders::PaymentBase",
+      "module": "shop::orders",
+      "name": {
+        "source": "PaymentBase",
+        "words": [
+          "payment",
+          "base"
+        ]
+      },
+      "doc": null,
+      "mixins": [],
+      "fields": [
+        {
+          "name": {
+            "source": "amount",
+            "words": [
+              "amount"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "scalar",
+            "name": "Decimal",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": {
+              "precision": 12,
+              "scale": 2
+            }
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "own"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/orders.linca",
+            "line": 10,
+            "column": 21
+          }
+        }
+      ],
+      "attributes": [],
+      "span": {
+        "file": "shop/orders.linca",
+        "line": 10,
+        "column": 7
+      }
+    },
+    {
+      "kind": "record",
+      "id": "shop::orders::CardPayment",
+      "module": "shop::orders",
+      "name": {
+        "source": "CardPayment",
+        "words": [
+          "card",
+          "payment"
+        ]
+      },
+      "doc": null,
+      "mixins": [
+        "shop::orders::PaymentBase"
+      ],
+      "fields": [
+        {
+          "name": {
+            "source": "amount",
+            "words": [
+              "amount"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "scalar",
+            "name": "Decimal",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": {
+              "precision": 12,
+              "scale": 2
+            }
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "mixin",
+            "id": "shop::orders::PaymentBase"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/orders.linca",
+            "line": 10,
+            "column": 21
+          }
+        },
+        {
+          "name": {
+            "source": "last4",
+            "words": [
+              "last4"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "scalar",
+            "name": "String",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": 4,
+            "maxLength": 4,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "own"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/orders.linca",
+            "line": 12,
+            "column": 39
+          }
+        }
+      ],
+      "rules": [],
+      "attributes": [],
+      "span": {
+        "file": "shop/orders.linca",
+        "line": 12,
+        "column": 8
+      }
+    },
+    {
+      "kind": "record",
+      "id": "shop::orders::BankTransfer",
+      "module": "shop::orders",
+      "name": {
+        "source": "BankTransfer",
+        "words": [
+          "bank",
+          "transfer"
+        ]
+      },
+      "doc": null,
+      "mixins": [
+        "shop::orders::PaymentBase"
+      ],
+      "fields": [
+        {
+          "name": {
+            "source": "amount",
+            "words": [
+              "amount"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "scalar",
+            "name": "Decimal",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": {
+              "precision": 12,
+              "scale": 2
+            }
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "mixin",
+            "id": "shop::orders::PaymentBase"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/orders.linca",
+            "line": 10,
+            "column": 21
+          }
+        },
+        {
+          "name": {
+            "source": "iban",
+            "words": [
+              "iban"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "scalar",
+            "name": "String",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "own"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/orders.linca",
+            "line": 13,
+            "column": 40
+          }
+        }
+      ],
+      "rules": [],
+      "attributes": [],
+      "span": {
+        "file": "shop/orders.linca",
+        "line": 13,
+        "column": 8
+      }
+    },
+    {
+      "kind": "union",
+      "id": "shop::orders::Payment",
+      "module": "shop::orders",
+      "name": {
+        "source": "Payment",
+        "words": [
+          "payment"
+        ]
+      },
+      "doc": null,
+      "discriminator": "kind",
+      "members": [
+        {
+          "record": "shop::orders::CardPayment",
+          "value": "card"
+        },
+        {
+          "record": "shop::orders::BankTransfer",
+          "value": "bank_transfer"
+        }
+      ],
+      "requires": [
+        "shop::orders::PaymentBase"
+      ],
+      "attributes": [],
+      "span": {
+        "file": "shop/orders.linca",
+        "line": 15,
+        "column": 7
+      }
+    },
+    {
+      "kind": "model",
+      "id": "shop::orders::Order",
+      "module": "shop::orders",
+      "name": {
+        "source": "Order",
+        "words": [
+          "order"
+        ]
+      },
+      "doc": null,
+      "mixins": [
+        "shop::common::Timestamps"
+      ],
+      "fields": [
+        {
+          "name": {
+            "source": "createdAt",
+            "words": [
+              "created",
+              "at"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "scalar",
+            "name": "DateTime",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": {
+            "kind": "generated",
+            "generator": "now"
+          },
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "mixin",
+            "id": "shop::common::Timestamps"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/common.linca",
+            "line": 3,
+            "column": 3
+          }
+        },
+        {
+          "name": {
+            "source": "updatedAt",
+            "words": [
+              "updated",
+              "at"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "scalar",
+            "name": "DateTime",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": true,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "mixin",
+            "id": "shop::common::Timestamps"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/common.linca",
+            "line": 4,
+            "column": 3
+          }
+        },
+        {
+          "name": {
+            "source": "id",
+            "words": [
+              "id"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "scalar",
+            "name": "Uuid",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": {
+            "kind": "generated",
+            "generator": "uuid"
+          },
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "own"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/orders.linca",
+            "line": 19,
+            "column": 3
+          }
+        },
+        {
+          "name": {
+            "source": "userId",
+            "words": [
+              "user",
+              "id"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "ref",
+            "id": "shop::common::UserId",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "own"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/orders.linca",
+            "line": 20,
+            "column": 3
+          }
+        },
+        {
+          "name": {
+            "source": "shipping",
+            "words": [
+              "shipping"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "ref",
+            "id": "shop::orders::Address",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": "columns",
+          "origin": {
+            "kind": "own"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/orders.linca",
+            "line": 22,
+            "column": 3
+          }
+        },
+        {
+          "name": {
+            "source": "payment",
+            "words": [
+              "payment"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "ref",
+            "id": "shop::orders::Payment",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": "json",
+          "origin": {
+            "kind": "own"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/orders.linca",
+            "line": 23,
+            "column": 3
+          }
+        },
+        {
+          "name": {
+            "source": "items",
+            "words": [
+              "items"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "list",
+            "element": {
+              "kind": "scalar",
+              "name": "String",
+              "nullable": false
+            },
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": "json",
+          "origin": {
+            "kind": "own"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/orders.linca",
+            "line": 24,
+            "column": 3
+          }
+        }
+      ],
+      "relations": [
+        {
+          "name": {
+            "source": "user",
+            "words": [
+              "user"
+            ]
+          },
+          "doc": null,
+          "target": "shop::users::User",
+          "cardinality": "one",
+          "nullable": false,
+          "owning": true,
+          "fields": [
+            "userId"
+          ],
+          "references": [
+            "id"
+          ],
+          "onDelete": "Cascade",
+          "relationName": null,
+          "inverse": "orders",
+          "origin": {
+            "kind": "own"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/orders.linca",
+            "line": 21,
+            "column": 3
+          }
+        }
+      ],
+      "primaryKey": [
+        "id"
+      ],
+      "uniques": [],
+      "indexes": [
+        {
+          "fields": [
+            "userId",
+            "createdAt"
+          ]
+        }
+      ],
+      "rules": [],
+      "attributes": [],
+      "span": {
+        "file": "shop/orders.linca",
+        "line": 18,
+        "column": 7
+      }
+    },
+    {
+      "kind": "enum",
+      "id": "shop::users::Role",
+      "module": "shop::users",
+      "name": {
+        "source": "Role",
+        "words": [
+          "role"
+        ]
+      },
+      "doc": null,
+      "valueType": "string",
+      "variants": [
+        {
+          "name": {
+            "source": "Admin",
+            "words": [
+              "admin"
+            ]
+          },
+          "doc": null,
+          "value": "Admin",
+          "attributes": [],
+          "span": {
+            "file": "shop/users.linca",
+            "line": 5,
+            "column": 13
+          }
+        },
+        {
+          "name": {
+            "source": "Member",
+            "words": [
+              "member"
+            ]
+          },
+          "doc": null,
+          "value": "Member",
+          "attributes": [],
+          "span": {
+            "file": "shop/users.linca",
+            "line": 5,
+            "column": 19
+          }
+        }
+      ],
+      "attributes": [],
+      "span": {
+        "file": "shop/users.linca",
+        "line": 5,
+        "column": 6
+      }
+    },
+    {
+      "kind": "model",
+      "id": "shop::users::User",
+      "module": "shop::users",
+      "name": {
+        "source": "User",
+        "words": [
+          "user"
+        ]
+      },
+      "doc": null,
+      "mixins": [
+        "shop::common::Timestamps"
+      ],
+      "fields": [
+        {
+          "name": {
+            "source": "createdAt",
+            "words": [
+              "created",
+              "at"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "scalar",
+            "name": "DateTime",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": {
+            "kind": "generated",
+            "generator": "now"
+          },
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "mixin",
+            "id": "shop::common::Timestamps"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/common.linca",
+            "line": 3,
+            "column": 3
+          }
+        },
+        {
+          "name": {
+            "source": "updatedAt",
+            "words": [
+              "updated",
+              "at"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "scalar",
+            "name": "DateTime",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": true,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "mixin",
+            "id": "shop::common::Timestamps"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/common.linca",
+            "line": 4,
+            "column": 3
+          }
+        },
+        {
+          "name": {
+            "source": "id",
+            "words": [
+              "id"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "ref",
+            "id": "shop::common::UserId",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": {
+            "kind": "generated",
+            "generator": "uuid"
+          },
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "own"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/users.linca",
+            "line": 8,
+            "column": 3
+          }
+        },
+        {
+          "name": {
+            "source": "email",
+            "words": [
+              "email"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "scalar",
+            "name": "String",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": 320,
+            "pattern": null,
+            "format": "Email",
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "own"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/users.linca",
+            "line": 9,
+            "column": 3
+          }
+        },
+        {
+          "name": {
+            "source": "passwordHash",
+            "words": [
+              "password",
+              "hash"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "scalar",
+            "name": "String",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": true,
+          "storage": null,
+          "origin": {
+            "kind": "own"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/users.linca",
+            "line": 10,
+            "column": 3
+          }
+        },
+        {
+          "name": {
+            "source": "role",
+            "words": [
+              "role"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "ref",
+            "id": "shop::users::Role",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": {
+            "kind": "variant",
+            "enum": "shop::users::Role",
+            "name": "Member"
+          },
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "own"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/users.linca",
+            "line": 11,
+            "column": 3
+          }
+        }
+      ],
+      "relations": [
+        {
+          "name": {
+            "source": "orders",
+            "words": [
+              "orders"
+            ]
+          },
+          "doc": null,
+          "target": "shop::orders::Order",
+          "cardinality": "many",
+          "nullable": false,
+          "owning": false,
+          "fields": [],
+          "references": [],
+          "onDelete": null,
+          "relationName": null,
+          "inverse": "user",
+          "origin": {
+            "kind": "own"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/users.linca",
+            "line": 12,
+            "column": 3
+          }
+        }
+      ],
+      "primaryKey": [
+        "id"
+      ],
+      "uniques": [
+        [
+          "email"
+        ]
+      ],
+      "indexes": [],
+      "rules": [],
+      "attributes": [],
+      "span": {
+        "file": "shop/users.linca",
+        "line": 7,
+        "column": 7
+      }
+    },
+    {
+      "kind": "view",
+      "id": "shop::users::PublicUser",
+      "module": "shop::users",
+      "name": {
+        "source": "PublicUser",
+        "words": [
+          "public",
+          "user"
+        ]
+      },
+      "doc": null,
+      "source": "shop::users::User",
+      "allowSensitive": false,
+      "fields": [
+        {
+          "name": {
+            "source": "createdAt",
+            "words": [
+              "created",
+              "at"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "scalar",
+            "name": "DateTime",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "inherited",
+            "declaration": "shop::users::User",
+            "field": "createdAt"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/common.linca",
+            "line": 3,
+            "column": 3
+          }
+        },
+        {
+          "name": {
+            "source": "updatedAt",
+            "words": [
+              "updated",
+              "at"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "scalar",
+            "name": "DateTime",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "inherited",
+            "declaration": "shop::users::User",
+            "field": "updatedAt"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/common.linca",
+            "line": 4,
+            "column": 3
+          }
+        },
+        {
+          "name": {
+            "source": "id",
+            "words": [
+              "id"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "ref",
+            "id": "shop::common::UserId",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "inherited",
+            "declaration": "shop::users::User",
+            "field": "id"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/users.linca",
+            "line": 8,
+            "column": 3
+          }
+        },
+        {
+          "name": {
+            "source": "email",
+            "words": [
+              "email"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "scalar",
+            "name": "String",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": null,
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": 320,
+            "pattern": null,
+            "format": "Email",
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "inherited",
+            "declaration": "shop::users::User",
+            "field": "email"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/users.linca",
+            "line": 9,
+            "column": 3
+          }
+        },
+        {
+          "name": {
+            "source": "role",
+            "words": [
+              "role"
+            ]
+          },
+          "doc": null,
+          "type": {
+            "kind": "ref",
+            "id": "shop::users::Role",
+            "nullable": false
+          },
+          "presence": "required",
+          "default": {
+            "kind": "variant",
+            "enum": "shop::users::Role",
+            "name": "Member"
+          },
+          "autoUpdated": false,
+          "constraints": {
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "pattern": null,
+            "format": null,
+            "decimal": null
+          },
+          "sensitive": false,
+          "storage": null,
+          "origin": {
+            "kind": "inherited",
+            "declaration": "shop::users::User",
+            "field": "role"
+          },
+          "attributes": [],
+          "span": {
+            "file": "shop/users.linca",
+            "line": 11,
+            "column": 3
+          }
+        }
+      ],
+      "rules": [],
+      "attributes": [],
+      "span": {
+        "file": "shop/users.linca",
+        "line": 15,
+        "column": 6
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+// Linca test case | spec 0.1 | section 10
+// Both import forms: a whole module (referred to by its last segment) and single items.
+
+enum Role { Host Guest }
+
+record Person {
+  name: String
+}

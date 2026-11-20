@@ -1,0 +1,22 @@
+// Linca test case | spec 0.1 | section 17.5
+// @query, @header and @body override the default placement. One body parameter of a record type is the whole body; a scalar body parameter makes an object.
+
+record Filter {
+  term: String
+}
+
+record Item {
+  name: String
+}
+
+service Search {
+  @post("/search")
+  search(
+    token: String @header("X-Token"),
+    limit: Int @query,
+    filter: Filter @body,
+  ) -> List<Item>
+
+  @post("/echo")
+  echo(text: String @body) -> String
+}

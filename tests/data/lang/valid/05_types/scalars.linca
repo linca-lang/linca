@@ -1,0 +1,16 @@
+// Linca test case | spec 0.1 | section 5.1
+// Every built-in scalar.
+
+record Scalars {
+  text: String
+  small: Int
+  big: Int64
+  ratio: Float
+  amount: Decimal @decimal(12, 2)
+  flag: Bool
+  key: Uuid
+  moment: DateTime
+  day: Date
+  blob: Bytes
+  extra: Json
+}

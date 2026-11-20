@@ -1,0 +1,13 @@
+// Linca test case | spec 0.1 | section 8
+// An optional relation has a nullable foreign key.
+
+model Team {
+  id: Uuid @primary
+  members: List<Person>
+}
+
+model Person {
+  id: Uuid @primary
+  teamId: Uuid?
+  team: Team? @relation(fields: [teamId])
+}

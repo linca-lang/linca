@@ -1,0 +1,13 @@
+// Linca test case | spec 0.1 | section 13
+// The full example from Section 13 of the specification.
+
+mixin Timestamps {
+  createdAt: DateTime @default(now())
+  updatedAt: DateTime @updated
+}
+
+type UserId = Uuid
+
+attribute email on field = [@format(Email), @length(max: 320)]
+
+attribute id on field = [@primary, @default(uuid())]

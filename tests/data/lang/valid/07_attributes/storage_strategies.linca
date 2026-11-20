@@ -1,0 +1,22 @@
+// Linca test case | spec 0.1 | section 7.3
+// The three storage strategies and the json default.
+
+record Address {
+  street: String
+  city: String
+}
+
+record Card { last4: String }
+record Cash { received: Bool }
+union Payment = Card | Cash
+
+model Order {
+  id: Uuid @primary
+  billing: Address                           // json by default
+  shipping: Address @storage(columns)
+  previous: List<Address> @storage(table)
+  payment: Payment @storage(json)
+  refunds: List<Payment> @storage(table)
+  tags: List<String>                         // json by default
+  labels: Map<String, String>                // json by default
+}

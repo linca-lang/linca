@@ -1,0 +1,6 @@
+// Linca test case | spec 0.1 | section 17.2
+// An operation without -> returns nothing; the response is empty.
+
+service Jobs {
+  cancel(id: Int)
+}

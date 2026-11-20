@@ -1,0 +1,17 @@
+// Linca test case | spec 0.1 | section 17.4
+// An error is not a type: not a field type, a parameter type, a result type or the source of a view.
+
+error NotFound {
+  resource: String
+}
+
+record Wrapper {
+  failure: NotFound    //~ E0803
+}
+
+view Copy = NotFound    //~ E0803
+
+service Reports {
+  report(failure: NotFound)    //~ E0803
+  load() -> NotFound    //~ E0803
+}

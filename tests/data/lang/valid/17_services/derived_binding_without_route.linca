@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 17.6
+// A derived binding without @route: the prefix is the service name in kebab-case.
+
+service OrderItems {
+  countOrders() -> Int
+  refund(orderId: Int, amount: Int)
+}

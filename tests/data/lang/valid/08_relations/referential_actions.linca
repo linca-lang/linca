@@ -1,0 +1,34 @@
+// Linca test case | spec 0.1 | section 8
+// All three referential actions. Restrict is also the default.
+
+model Account {
+  id: Uuid @primary
+  sessions: List<Session>
+  invoices: List<Invoice>
+  drafts: List<Draft>
+  notes: List<Note>
+}
+
+model Session {
+  id: Uuid @primary
+  accountId: Uuid
+  account: Account @relation(fields: [accountId], onDelete: Cascade)
+}
+
+model Invoice {
+  id: Uuid @primary
+  accountId: Uuid
+  account: Account @relation(fields: [accountId], onDelete: Restrict)
+}
+
+model Draft {
+  id: Uuid @primary
+  accountId: Uuid?
+  account: Account? @relation(fields: [accountId], onDelete: SetNull)
+}
+
+model Note {
+  id: Uuid @primary
+  accountId: Uuid
+  account: Account @relation(fields: [accountId])   // default: Restrict
+}

@@ -1,0 +1,11 @@
+// Linca test case | spec 0.1 | section 7.3
+// PENDING: needs a configured target that does not declare the `columns` capability.
+
+record Address {
+  city: String
+}
+
+model Order {
+  id: Uuid @primary
+  shipping: Address @storage(columns)    //~ E0420
+}

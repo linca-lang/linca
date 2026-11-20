@@ -1,0 +1,10 @@
+// Linca test case | spec 0.1 | section 17.5
+// Two operations with the same method and the same path. Placeholders are equal whatever their names.
+
+service Items {
+  @get("/items/{id}")
+  getItem(id: Int) -> String
+
+  @get("/items/{key}")
+  fetchItem(key: Int) -> String    //~ E0814
+}

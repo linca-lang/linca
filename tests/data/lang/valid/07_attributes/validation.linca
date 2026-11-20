@@ -1,0 +1,14 @@
+// Linca test case | spec 0.1 | section 7.2
+// Every validation attribute and every form of @length.
+
+record Signup {
+  email: String @format(Email) @length(max: 320)
+  website: String? @format(Uri)
+  username: String @length(min: 3, max: 32) @pattern("[a-z][a-z0-9_]*")
+  pin: String @length(4)
+  age: Int @min(13) @max(150)
+  score: Float @min(0.0) @max(1.0)
+  balance: Decimal @decimal(12, 2) @min(0)
+  tags: List<String> @length(max: 10)
+  avatar: Bytes? @length(max: 1_048_576)
+}

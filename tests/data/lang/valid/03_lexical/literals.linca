@@ -1,0 +1,10 @@
+// Linca test case | spec 0.1 | section 3.4
+// Every literal form, passed as attribute arguments.
+
+attribute sample(text: String, count: Int, ratio: Float, flag: Bool, names: List<String>) on field
+
+record Literals {
+  escapes: String @sample("tab\there, \"quoted\", back\\slash, \u{1F600}", 1_000, 1.5e-3, true, ["x", "y"])
+  negatives: String @sample(text: "", count: -42, ratio: -0.25, flag: false, names: [])
+  intAsFloat: String @sample("int literal fits Float", 0, 2, true, ["only"])
+}

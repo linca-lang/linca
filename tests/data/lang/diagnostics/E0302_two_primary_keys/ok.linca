@@ -1,0 +1,8 @@
+// Linca test case | spec 0.1 | section 6.1
+// Two fields marked @primary; a composite key is declared on the model.
+
+@primary(fields: [userId, teamId])
+model Membership {
+  userId: Uuid
+  teamId: Uuid
+}

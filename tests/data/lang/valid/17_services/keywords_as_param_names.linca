@@ -1,0 +1,15 @@
+// Linca test case | spec 0.1 | section 17.3
+// A keyword, also a reserved one, can name a parameter.
+
+service Finder {
+  find(
+    type: String,
+    on: Bool,
+    error: Int,
+    service: String,
+    throws: Int,
+    with: Int,
+    as: Int,
+    private: Bool,
+  ) -> String
+}

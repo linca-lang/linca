@@ -1,0 +1,17 @@
+// Linca test case | spec 0.1 | section 9.1
+// Mixin fields are copied in order, before the declaration's own fields, and keep their attributes.
+
+mixin Timestamps {
+  createdAt: DateTime @default(now())
+  updatedAt: DateTime @updated
+}
+
+mixin SoftDelete {
+  deletedAt: DateTime?
+}
+
+// field order: createdAt, updatedAt, deletedAt, id, total
+model Order with Timestamps, SoftDelete {
+  id: Uuid @primary @default(uuid())
+  total: Int
+}

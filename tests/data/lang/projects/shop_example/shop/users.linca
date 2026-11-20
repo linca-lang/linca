@@ -1,0 +1,17 @@
+// Linca test case | spec 0.1 | section 13
+// The full example from Section 13 of the specification.
+
+import shop::common::{Timestamps, UserId, email, id}
+import shop::orders::{Order}
+
+enum Role { Admin Member }
+
+model User with Timestamps {
+  id: UserId @id
+  email: String @email @unique
+  passwordHash: String @sensitive
+  role: Role @default(Member)
+  orders: List<Order>
+}
+
+view PublicUser = User without { passwordHash }

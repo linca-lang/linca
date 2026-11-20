@@ -1,0 +1,6 @@
+// Linca test case | spec 0.1 | section 17.4
+// The fields of an error follow the rules of a record: no storage attributes.
+
+error Duplicate {
+  code: String
+}

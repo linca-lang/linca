@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 7.6
+// uuid() is allowed on Uuid fields only.
+
+model User {
+  id: Uuid @primary @default(uuid())
+  name: String @default("anonymous")
+}

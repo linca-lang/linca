@@ -1,0 +1,9 @@
+// Linca test case | spec 0.1 | section 5.5
+// A domain type must be based on a built-in scalar.
+
+enum Role {
+  Admin
+  Member
+}
+
+type RoleCode = Role    //~ E0221

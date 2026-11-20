@@ -1,0 +1,15 @@
+// Linca test case | spec 0.1 | section 5.2
+// Lists and string-keyed maps, including nesting.
+
+record Address {
+  city: String
+}
+
+record Collections {
+  tags: List<String>
+  scores: Map<String, Int>
+  addresses: List<Address>
+  byRegion: Map<String, Address>
+  matrix: List<List<Int>>
+  groups: Map<String, List<String>>
+}

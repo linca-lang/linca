@@ -1,0 +1,24 @@
+// Linca test case | spec 0.1 | section 17.5
+// Every method attribute, with and without a path, under a route prefix.
+
+record Note {
+  text: String
+}
+
+@route("/notes")
+service Notes {
+  @get
+  listNotes() -> List<Note>
+
+  @post
+  createNote(note: Note) -> Note
+
+  @put("/{id}")
+  replaceNote(id: Int, note: Note) -> Note
+
+  @patch("/{id}")
+  changeNote(id: Int, note: Note) -> Note
+
+  @delete("/{id}")
+  removeNote(id: Int)
+}

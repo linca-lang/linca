@@ -1,0 +1,11 @@
+// schema/shop/common.linca
+mixin Timestamps {
+  createdAt: DateTime @default(now())
+  updatedAt: DateTime @updated
+}
+
+type UserId = Uuid
+
+attribute email on field = [@format(Email), @length(max: 320)]
+
+attribute id on field = [@primary, @default(uuid())]

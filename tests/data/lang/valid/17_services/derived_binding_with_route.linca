@@ -1,0 +1,8 @@
+// Linca test case | spec 0.1 | section 17.6
+// A derived binding under a @route prefix: POST, prefix and the operation name in kebab-case.
+
+@route("/billing")
+service Billing {
+  refund(orderId: Int, amount: Int)
+  countOrders() -> Int
+}

@@ -1,0 +1,6 @@
+// Linca test case | spec 0.1 | section 10
+// Built-in names cannot be redeclared.
+
+record Text {
+  value: Int
+}

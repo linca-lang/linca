@@ -1,0 +1,13 @@
+// Linca test case | spec 0.1 | section 7.6
+// Every value generator on every field type it allows, including a domain type.
+
+type EventId = Uuid
+
+model Event {
+  id: EventId @primary @default(uuid7())
+  token: Uuid @default(uuid())
+  sequence: Int64 @default(autoincrement())
+  createdAt: DateTime @default(now())
+  day: Date @default(now())
+  updatedAt: DateTime @updated
+}

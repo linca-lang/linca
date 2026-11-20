@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 4
+// Fields are not separated by commas.
+
+record Point {
+  x: Int,    //~ E0106
+  y: Int
+}

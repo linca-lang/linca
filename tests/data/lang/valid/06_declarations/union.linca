@@ -1,0 +1,25 @@
+// Linca test case | spec 0.1 | section 6.5
+// Default discriminator (kind), custom name, per-member values, required mixin, one record in two unions.
+
+mixin PaymentBase {
+  amount: Int
+}
+
+record Card with PaymentBase {
+  last4: String
+}
+
+record Transfer with PaymentBase {
+  iban: String
+}
+
+record Cash with PaymentBase {
+  received: Bool
+}
+
+// discriminator field `kind`; values "card", "Transfer", "Cash"
+union Payment requires PaymentBase = Card as "card" | Transfer | Cash
+
+// same record Card with another value in another union
+@discriminator("method")
+union OnlinePayment = Card as "bank_card" | Transfer as "wire"

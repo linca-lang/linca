@@ -1,0 +1,9 @@
+// Linca test case | spec 0.1 | section 8
+// Both fields of a self-relation are in the same model.
+
+model Category {
+  id: Uuid @primary
+  parentId: Uuid?
+  parent: Category? @relation(fields: [parentId])
+  children: List<Category>
+}

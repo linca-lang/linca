@@ -1,0 +1,13 @@
+// Linca test case | spec 0.1 | section 17.3
+// A model cannot be a parameter type or a result type, also inside List. A view is used instead.
+
+model User {
+  id: Uuid @primary
+}
+
+view UserView = User
+
+service Users {
+  save(user: UserView)
+  list() -> List<UserView>
+}

@@ -1,0 +1,10 @@
+// Linca test case | spec 0.1 | section 9.2
+// A view must not contain a @sensitive field unless it says so.
+
+model User {
+  id: Uuid @primary
+  email: String
+  passwordHash: String @sensitive
+}
+
+view UserInfo = User only { email, passwordHash }    //~ E0611

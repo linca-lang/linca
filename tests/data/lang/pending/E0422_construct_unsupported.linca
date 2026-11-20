@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 16
+// PENDING: needs a configured target that does not declare int-valued enums.
+
+enum Priority {    //~ E0422
+  Low = 1
+  High = 2
+}

@@ -1,0 +1,8 @@
+// Linca test case | spec 0.1 | section 9.2
+// + { } cannot add a field whose name already exists.
+
+record Profile {
+  email: String
+}
+
+view ProfileWithStats = Profile + { email: String }    //~ E0613

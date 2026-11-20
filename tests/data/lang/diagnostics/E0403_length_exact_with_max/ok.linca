@@ -1,0 +1,6 @@
+// Linca test case | spec 0.1 | section 7.2
+// @length cannot combine the exact length with min or max.
+
+record Card {
+  last4: String @length(4)
+}

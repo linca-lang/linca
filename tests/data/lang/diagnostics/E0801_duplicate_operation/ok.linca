@@ -1,0 +1,10 @@
+// Linca test case | spec 0.1 | section 17.2
+// Two operations with the same name in one service. The routes differ, so E0814 is not expected.
+
+service Health {
+  @get("/a")
+  ping() -> String
+
+  @get("/b")
+  pong() -> String
+}

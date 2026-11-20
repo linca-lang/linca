@@ -1,0 +1,18 @@
+// Linca test case | spec 0.1 | section 7.2
+// @rule is repeatable, allowed on model, record and view, and is not carried from a source into a view.
+
+@rule("endAfterStart")
+@rule("withinOpeningHours")
+model Booking {
+  id: Uuid @primary
+  startsAt: DateTime
+  endsAt: DateTime
+  note: String?
+}
+
+// Has both fields the rule needs, so it declares the rule again.
+@rule("endAfterStart")
+view CreateBooking = Booking only { startsAt, endsAt, note }
+
+// Carries no rules: the source's rules are not inherited.
+view RenameBooking = Booking only { note }

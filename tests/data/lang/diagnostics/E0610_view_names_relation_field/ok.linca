@@ -1,0 +1,15 @@
+// Linca test case | spec 0.1 | section 9.2
+// Relation fields are not part of a view, so they cannot be named in an operator.
+
+model User {
+  id: Uuid @primary
+  posts: List<Post>
+}
+
+model Post {
+  id: Uuid @primary
+  authorId: Uuid
+  author: User @relation(fields: [authorId])
+}
+
+view PostRef = Post only { id, authorId }

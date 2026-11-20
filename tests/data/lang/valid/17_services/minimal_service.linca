@@ -1,0 +1,6 @@
+// Linca test case | spec 0.1 | section 17.1
+// The smallest service: one operation without parameters, result or errors.
+
+service Health {
+  ping()
+}

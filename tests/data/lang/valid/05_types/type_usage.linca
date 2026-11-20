@@ -1,0 +1,31 @@
+// Linca test case | spec 0.1 | section 5.6
+// Which type kinds may be used where.
+
+enum Role { Admin Member }
+
+record Address {
+  city: String
+}
+
+record Card { last4: String }
+record Cash { received: Bool }
+union Payment = Card | Cash
+
+view CityOnly = Address only { city }
+
+// record, union, view, enum and collections as record fields
+record Summary {
+  role: Role
+  address: Address
+  payment: Payment
+  city: CityOnly
+  history: List<Payment>
+}
+
+// record, union and enum as model fields (default storage strategy: json)
+model Customer {
+  id: Uuid @primary
+  role: Role
+  address: Address
+  payment: Payment
+}

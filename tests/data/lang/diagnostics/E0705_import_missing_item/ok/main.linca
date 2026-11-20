@@ -1,0 +1,9 @@
+// Linca test case | spec 0.1 | section 10
+// An imported item must be declared in the imported module.
+
+import lib::{Shared}
+
+record Box {
+  label: String
+  inner: Shared
+}

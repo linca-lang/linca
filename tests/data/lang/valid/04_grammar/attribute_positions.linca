@@ -1,0 +1,15 @@
+// Linca test case | spec 0.1 | section 4
+// Declaration attributes come before the declaration; field and variant attributes come after.
+
+@doc("Internal marker.")
+record Marker {
+  label: String @length(max: 20) @doc("Shown in lists.")
+}
+
+enum Status {
+  Active @doc("Visible to everyone.")
+  Archived = "archived" @doc("Hidden from lists.")
+}
+
+@length(max: 64)
+type Slug = String

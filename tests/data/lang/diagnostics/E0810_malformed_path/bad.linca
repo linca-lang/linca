@@ -1,0 +1,19 @@
+// Linca test case | spec 0.1 | section 17.5
+// A path has segments after a slash: no trailing slash, no empty segment, no query string, a placeholder takes a whole segment.
+
+service Paths {
+  @get("/users/")    //~ E0810
+  trailing() -> String
+
+  @get("/users//all")    //~ E0810
+  emptySegment() -> String
+
+  @get("/users?active=1")    //~ E0810
+  queryString() -> String
+
+  @get("/item-{id}")    //~ E0810
+  partialPlaceholder(id: Int) -> String
+
+  @get("plain")    //~ E0810
+  noLeadingSlash() -> String
+}

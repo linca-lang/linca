@@ -1,0 +1,6 @@
+// Linca test case | spec 0.1 | section 7.1
+// A non-repeatable attribute used twice on one field.
+
+record Person {
+  name: String @length(max: 10) @length(max: 20)    //~ E0404
+}

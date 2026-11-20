@@ -1,0 +1,6 @@
+// Linca test case | spec 0.1 | section 17.4
+// The member error is used on the wire, so an error has no field of that name.
+
+error Failed {
+  error: String    //~ E0808
+}

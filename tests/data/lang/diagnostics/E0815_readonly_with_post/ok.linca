@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 17.7
+// @readonly together with a method other than GET.
+
+service Billing {
+  @readonly
+  charge()
+}

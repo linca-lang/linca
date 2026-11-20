@@ -1,0 +1,15 @@
+// Linca test case | spec 0.1 | section 9.1
+// A mixin may use other mixins.
+
+mixin Authored {
+  createdBy: String
+}
+
+mixin Audited with Authored {
+  createdAt: DateTime
+}
+
+// field order: createdBy, createdAt, title
+record Document with Audited {
+  title: String
+}

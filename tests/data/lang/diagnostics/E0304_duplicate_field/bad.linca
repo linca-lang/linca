@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 6.1
+// Two fields with the same name in one declaration.
+
+record Point {
+  x: Int
+  x: Int    //~ E0304
+}

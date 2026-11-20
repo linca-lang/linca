@@ -1,0 +1,15 @@
+// Linca test case | spec 0.1 | section 4
+// A trailing comma is allowed in every comma-separated list.
+
+attribute tag(name: String, weight: Int = 1,) on field
+
+attribute short on field = [@length(min: 1, max: 5,), @pattern("[a-z]+"),]
+
+@index(fields: [name, code,],)
+model Item {
+  id: Uuid @primary
+  name: String @tag("main", 2,)
+  code: String @short
+}
+
+view ItemRef = Item only { id, name, }

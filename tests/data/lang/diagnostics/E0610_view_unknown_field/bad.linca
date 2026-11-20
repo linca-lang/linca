@@ -1,0 +1,9 @@
+// Linca test case | spec 0.1 | section 9.2
+// A view operator names a field the source does not have.
+
+record Account {
+  login: String
+  password: String
+}
+
+view PublicAccount = Account without { passwrd }    //~ E0610

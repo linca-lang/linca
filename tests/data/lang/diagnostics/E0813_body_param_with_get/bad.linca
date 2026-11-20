@@ -1,0 +1,13 @@
+// Linca test case | spec 0.1 | section 17.5
+// An operation with GET or DELETE has no body parameters.
+
+record Payload {
+  text: String
+}
+
+service Items {
+  @get("/echo")
+  echo(
+    payload: Payload @body,    //~ E0813
+  ) -> String
+}

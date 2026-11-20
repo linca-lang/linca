@@ -1,0 +1,8 @@
+// Linca test case | spec 0.1 | section 7.5
+// Namespaces belong to plugins; a user module cannot declare one.
+
+attribute acme.tag(name: String) on field    //~ E0407
+
+record Item {
+  title: String
+}

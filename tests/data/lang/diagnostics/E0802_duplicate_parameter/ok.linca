@@ -1,0 +1,9 @@
+// Linca test case | spec 0.1 | section 17.3
+// Two parameters with the same name in one operation.
+
+service Users {
+  find(
+    id: Int,
+    name: String,
+  )
+}

@@ -1,0 +1,6 @@
+// Linca test case | spec 0.1 | section 3.2
+// Type names are PascalCase. A warning, not an error.
+
+record order_item {    //~ W0001
+  price: Int
+}

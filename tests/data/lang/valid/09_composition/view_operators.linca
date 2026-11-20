@@ -1,0 +1,17 @@
+// Linca test case | spec 0.1 | section 9.2
+// The four view operators and chaining through another view.
+
+model User {
+  id: Uuid @primary @default(uuid())
+  email: String @unique @format(Email)
+  name: String?
+  passwordHash: String @sensitive
+}
+
+view PublicUser = User without { passwordHash }
+view CreateUser = User only { email, name }
+view UpdateUser = CreateUser partial
+view UserWithStats = PublicUser + { postCount: Int lastSeenAt: DateTime? }
+
+// several operators, applied left to right
+view UserCard = User without { passwordHash } only { id, name } + { avatarUrl: String }

@@ -1,0 +1,9 @@
+// Linca test case | spec 0.1 | section 17.5
+// A parameter named by a placeholder has no placement attribute.
+
+service Items {
+  @get("/{id}")
+  getItem(
+    id: Int @query,    //~ E0813
+  ) -> String
+}

@@ -1,0 +1,6 @@
+// Linca test case | spec 0.1 | section 5.3
+// A collection itself cannot be nullable; its elements can.
+
+record Article {
+  tags: List<String?>
+}

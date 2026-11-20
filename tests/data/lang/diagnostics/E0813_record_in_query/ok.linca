@@ -1,0 +1,13 @@
+// Linca test case | spec 0.1 | section 17.5
+// A record cannot be sent in the query. On GET the default placement of a parameter is the query.
+
+record Filter {
+  term: String
+}
+
+service Search {
+  @post("/search")
+  search(
+    filter: Filter,
+  ) -> String
+}

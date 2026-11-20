@@ -1,0 +1,16 @@
+// Linca test case | spec 0.1 | section 8
+// Two relations between the same models are told apart by name on both sides.
+
+model User {
+  id: Uuid @primary
+  authored: List<Post> @relation(name: "authored")
+  reviewed: List<Post> @relation(name: "reviewed")
+}
+
+model Post {
+  id: Uuid @primary
+  authorId: Uuid
+  reviewerId: Uuid?
+  author: User @relation(name: "authored", fields: [authorId])
+  reviewer: User? @relation(name: "reviewed", fields: [reviewerId])
+}

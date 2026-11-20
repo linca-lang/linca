@@ -1,0 +1,16 @@
+// Linca test case | spec 0.1 | section 9.2
+// A view may derive from a record or from another view, and may be used as a record field type.
+
+record Address {
+  street: String
+  city: String
+  postalCode: String?
+}
+
+view CityOnly = Address only { city }
+view CityPatch = CityOnly partial
+
+record Shipment {
+  destination: CityOnly
+  stops: List<CityOnly>
+}

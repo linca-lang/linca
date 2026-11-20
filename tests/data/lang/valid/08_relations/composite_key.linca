@@ -1,0 +1,16 @@
+// Linca test case | spec 0.1 | section 8
+// A composite foreign key references a composite primary key, pairwise by type.
+
+@primary(fields: [tenantId, number])
+model Invoice {
+  tenantId: Uuid
+  number: Int
+  lines: List<InvoiceLine>
+}
+
+model InvoiceLine {
+  id: Uuid @primary
+  tenantId: Uuid
+  invoiceNumber: Int
+  invoice: Invoice @relation(fields: [tenantId, invoiceNumber])
+}

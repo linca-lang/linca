@@ -1,0 +1,9 @@
+// Linca test case | spec 0.1 | section 17.5
+// A parameter has at most one of @query, @header and @body.
+
+service Items {
+  @post("/items")
+  create(
+    name: String @query,
+  )
+}

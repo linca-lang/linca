@@ -1,0 +1,10 @@
+// Linca test case | spec 0.1 | section 17.2
+// Every item after throws must be an error declaration.
+
+error Missing {
+  what: String
+}
+
+service Docs {
+  open() throws Missing
+}

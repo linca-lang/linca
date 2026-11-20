@@ -1,0 +1,15 @@
+// Linca test case | spec 0.1 | section 9.2
+// Storage attributes are dropped in a view; validation, literal defaults and user attributes are kept.
+
+enum Role { Admin Member }
+
+attribute pii on field
+
+model User {
+  id: Uuid @primary @default(uuid())           // view: no @primary, no @default (generator)
+  email: String @unique @length(max: 320) @pii  // view: @length and @pii stay, @unique goes
+  role: Role @default(Member)                   // view: @default(Member) stays
+  updatedAt: DateTime @updated                  // view: @updated goes
+}
+
+view UserSnapshot = User partial

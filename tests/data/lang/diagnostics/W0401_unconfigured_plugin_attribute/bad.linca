@@ -1,0 +1,7 @@
+// Linca test case | spec 0.1 | section 7.5
+// A namespaced attribute whose plugin is not configured. The test cases run with no plugins, so any plugin attribute warns. The passing twin needs a configured plugin: see pending/.
+
+model User {
+  id: Uuid @primary
+  email: String @prisma.map("e_mail")    //~ W0401
+}
