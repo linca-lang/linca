@@ -1,0 +1,4 @@
+// Linca test case | spec 0.1 | section 5.5
+// A domain type cannot be based on a collection (ADR-0001).
+
+type Tags = List<String>    //~ E0221

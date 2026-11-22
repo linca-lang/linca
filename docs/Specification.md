@@ -147,7 +147,7 @@ view_op       = "without" "{" name_list "}"
               | "partial" ;
 name_list     = field_name { "," field_name } [ "," ] ;
 
-newtype       = "type" ident "=" type_name ;      (* base MUST be a built-in scalar *)
+newtype       = "type" ident "=" type_ref ;       (* base MUST be a built-in scalar; see 5.5, ADR-0001 *)
 
 service       = "service" ident "{" { operation } "}" ;
 operation     = { attribute_use } ident "(" [ op_param { "," op_param } [ "," ] ] ")"
@@ -255,7 +255,7 @@ type Money = Decimal
 
 Rules:
 
-- The base MUST be a built-in scalar (Section 5.1). `type Tags = List<String>` or a type over a record, enum or another `type` is E0221.
+- The base MUST be a built-in scalar (Section 5.1), not nullable. A collection (`type Tags = List<String>`), a nullable type (`type Name = String?`) and a type over a record, enum or another `type` are E0221 (ADR-0001). The parser accepts any `type_ref` here; the check reports the error.
 - `UserId` and `OrderId` are different types even though both are `Uuid` (see 5.4). `authorId: Uuid` referencing `id: UserId` is E0220.
 - Attributes on the declaration apply to every field of that type. A field MUST NOT repeat a non-repeatable attribute its type already carries (E0404).
 
@@ -873,6 +873,7 @@ Decided in this draft:
 
 - Separators: none. Fields are not separated by commas, `;` or significant newlines ([[#4. Grammar]]).
 - `type` is a nominal newtype over a built-in scalar ([[#5.5 Domain types]]).
+- The grammar accepts any `type_ref` as the base of `type`; the check reports E0221 for a base that is not a built-in scalar (ADR-0001).
 - Repeatability is a property of the attribute declaration ([[#7.1 General rules]]).
 - Attribute sets have no parameters in v0.1 ([[#7.4 User-defined attributes]]).
 - Default generators are built-in markers, not functions ([[#7.6 Value generators]]).
