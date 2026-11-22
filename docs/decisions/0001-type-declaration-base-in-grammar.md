@@ -4,6 +4,7 @@
 - **Affects:** language
 - **Spec:** Specification §4 (`newtype`), §5.5, §12 (E0103, E0221)
 - **Cases:** tests/data/lang/diagnostics/E0221_type_base_not_scalar
+- **Status:** accepted
 
 ## Context
 

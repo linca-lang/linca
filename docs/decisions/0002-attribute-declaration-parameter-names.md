@@ -4,6 +4,7 @@
 - **Affects:** language
 - **Spec:** Specification §3.3, §4 (`attribute_decl`, `param`, `arg`), §7.4
 - **Cases:** none yet (a case would go under tests/data/lang/valid/07_attributes)
+- **Status:** accepted
 
 ## Context
 
