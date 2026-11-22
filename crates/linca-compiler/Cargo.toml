@@ -1,0 +1,19 @@
+[package]
+name = "linca-compiler"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+linca-ir = { path = "../linca-ir" }
+
+[dev-dependencies]
+libtest-mimic = "0.8.2"
+
+[[test]]
+name = "lang"
+harness = false
+
+[lints]
+workspace = true

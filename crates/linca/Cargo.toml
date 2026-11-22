@@ -1,0 +1,12 @@
+[package]
+name = "linca"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+linca-compiler = { path = "../linca-compiler" }
+
+[lints]
+workspace = true
