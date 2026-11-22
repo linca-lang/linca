@@ -71,7 +71,7 @@ flowchart TD
 3. **Implement (impl session).** `/implement-cases <filter>`, for example `/implement-cases E05`: the agent writes
    code until the selected cases pass, then the `reviewer` subagent, which sees only the diff, looks for stubs,
    special cases, non-determinism and spec violations.
-4. **Review and commit.** You read the diff, run what you want to run, and commit with an `Assisted-by:` trailer.
+4. **Review and commit.** You read the diff, run what you want to run, and commit after human approval.
 
 If, during step 3, the agent thinks a case or the spec is wrong, it does not touch them. It writes an ADR draft,
 leaves the case failing, and reports the task as blocked. The question goes back to step 1.

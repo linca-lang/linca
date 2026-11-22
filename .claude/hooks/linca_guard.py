@@ -50,7 +50,7 @@ LOCKED = {
     ],
     "spec": ["crates/", "Cargo.toml", "Cargo.lock"],
 }
-HARNESS = [".claude/", "AI-POLICY.md", "docs/ai-workflow.md"] # edited by hand only
+HARNESS = [".claude/", "AI-POLICY.md", "docs/AI Workflow.md"] # edited by hand only
 # Final decision records belong to the human. An agent writes only drafts, NNNN-kebab-title.draft.md;
 # the human reviews a draft by renaming it to NNNN-kebab-title.md and setting its status.
 DECISIONS = "docs/decisions/"
@@ -348,7 +348,7 @@ def post_edit(data):
         return
     if rel.endswith(".rs"):
         try:
-            subprocess.run(["rustfmt", "--edition", "2021", str(ROOT / rel)],
+            subprocess.run(["rustfmt", str(ROOT / rel)],
                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         except FileNotFoundError:
             pass
