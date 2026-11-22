@@ -22,6 +22,26 @@ There is no index of cases. The runner walks this directory in sorted order; eve
 expectations are the `//~` annotations below (ADR-0006). The `section` in the header line is documentation
 and is not read by the runner.
 
+## How cases are discovered
+
+The runner walks `tests/data/lang/` in sorted order. Every case id is its path below `lang/`,
+without the `.linca` extension for a single file.
+
+| Location | A case is |
+|---|---|
+| `diagnostics/<CODE>_<name>/` | each of `bad`, `ok`: a file `<x>.linca` or a directory `<x>/` |
+| `valid/<NN_section>/` | each `<name>.linca` file, and each `<name>/` directory |
+| `projects/` | each `<name>/` directory |
+| `pending/` | each `<name>.linca` file; discovered but not run |
+
+- A directory case is a schema root (see "How a case is compiled"); everything below it belongs to
+  that case and is not a case itself.
+- `valid/` has exactly two levels: a section directory `NN_<section>/`, then its cases. A directory
+  directly in `valid/` is always a section, never a case.
+- Anything else (other file types, files directly in `valid/`, `projects/` or `diagnostics/`) is
+  ignored.
+- Discovery finding no cases at all is an error.
+
 ## How a case is compiled
 
 - A single file (`bad.linca`, `ok.linca`, `valid/**/x.linca`) is compiled **alone**, as a schema
