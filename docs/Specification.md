@@ -81,10 +81,10 @@ override include extend for private
 
 Keywords are **contextual**. A keyword has its special meaning only in the positions where the grammar expects it.
 
-- A keyword (current or reserved) MAY be used as a field name, a parameter name and an attribute argument name without any escaping: `type: String`, `on: Bool`. The only exceptions are `true`, `false` and `null`, which are always literals.
+- A keyword (current or reserved) MAY be used as a field name, a parameter name (of an operation or of an attribute declaration) and an attribute argument name without any escaping: `type: String`, `on: Bool` (ADR-0002). The only exceptions are `true`, `false` and `null`, which are always literals.
 - A keyword MUST NOT be used as the name of a declaration, an enum variant, an operation or a module segment (E0104).
 
-This is unambiguous because a field always starts with `field_name ":"` inside a block, a parameter with `field_name ":"` inside the parentheses of an operation, and declarations always start at file level. There is no escaping syntax.
+This is unambiguous because a field always starts with `field_name ":"` inside a block, a parameter with `field_name ":"` inside the parentheses of an operation or an attribute declaration, and declarations always start at file level. There is no escaping syntax.
 
 ### 3.4 Literals
 
@@ -158,7 +158,7 @@ error         = "error" ident [ with_clause ] "{" { field } "}" ;
 
 attribute_decl = [ "repeatable" ] "attribute" attr_path [ "(" param { "," param } [ "," ] ")" ] "on" target_list ;
 attribute_set  = "attribute" ident "on" target_list "=" "[" attribute_use { "," attribute_use } [ "," ] "]" ;
-param         = ident ":" type_ref [ "=" value ] ;
+param         = field_name ":" type_ref [ "=" value ] ;   (* ADR-0002 *)
 target_list   = target { "," target } ;
 target        = "field" | "model" | "record" | "mixin" | "enum" | "variant" | "union" | "view" | "type"
               | "service" | "operation" | "param" | "error" ;
@@ -877,6 +877,7 @@ Decided in this draft:
 - Repeatability is a property of the attribute declaration ([[#7.1 General rules]]).
 - Attribute sets have no parameters in v0.1 ([[#7.4 User-defined attributes]]).
 - Default generators are built-in markers, not functions ([[#7.6 Value generators]]).
+- A parameter of an attribute declaration may be named like a keyword, as an argument and an operation parameter may ([[#3.3 Keywords]], ADR-0002).
 - Declaration-level attributes are always written before the declaration, including `type`; attribute sets use brackets ([[#4. Grammar]]).
 - Nullability and presence are separate properties; `partial` changes only presence ([[#5.3 Optionality]]).
 - The back-relation is required, and generators never invent relation fields ([[#8. Relations]]).

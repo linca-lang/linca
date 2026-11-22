@@ -1,0 +1,8 @@
+// Linca test case | spec 0.1 | section 3.3
+// Parameters of an attribute declaration may be named like keywords: `type` and `on`.
+
+attribute marker(type: String, on: Bool = false) on field
+
+record Note {
+  text: String @marker(type: "plain", on: true)
+}
