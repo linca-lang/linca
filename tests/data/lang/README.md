@@ -15,8 +15,12 @@ lang/
   valid/<NN_section>/          files and directories that must compile without diagnostics
   projects/<name>/             larger multi-module schemas, no diagnostics
   pending/                     cases that need plugin configuration; not runnable yet
-  cases.json                   machine-readable index of every case
 ```
+
+There is no index of cases. The runner walks this directory in sorted order; every `.linca` file and every
+`bad/`, `ok/` or project directory is a case, its id is its path, and `pending/` is skipped. The only
+expectations are the `//~` annotations below (ADR-0006). The `section` in the header line is documentation
+and is not read by the runner.
 
 ## How a case is compiled
 

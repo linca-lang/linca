@@ -376,7 +376,7 @@ The library does no input or output of its own except through `source`, `config`
 
 |Test|What it proves|
 |---|---|
-|**Test case runner**|every case of the language test cases behaves as annotated: each `//~ CODE` line gets that code, the set of codes matches, files without annotations are clean|
+|**Test case runner**|finds the cases by walking the language test cases, with no index; the number of cases found is not zero (ADR-0006); every case behaves as annotated: each `//~ CODE` line gets that code, the set of codes matches, files without annotations are clean|
 |**IR snapshots**|for every valid case, the IR equals the stored `<name>.ir.json`; a changed snapshot is reviewed, not regenerated blindly|
 |**Schema validation**|every IR the compiler emits in tests validates against `schema/linca-ir.schema.json`|
 |**Never panics**|arbitrary bytes and arbitrary token sequences make the compiler report diagnostics, not crash or hang|

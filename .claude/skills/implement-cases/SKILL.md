@@ -28,7 +28,7 @@ If the runner does not exist yet, building it is the first task (RFC §11). It g
 
 Stop changing code for that case. Use the `adr` skill to write a draft (NNNN-title.draft.md): the case id, the spec
 section, what the case expects, what you think the spec says, and the options. Leave the case failing and
-report it. Never edit the case, the spec or `cases.json`. The hooks block it anyway.
+report it.
 
 ## 4. Done
 
