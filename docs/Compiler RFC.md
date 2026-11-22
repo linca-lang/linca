@@ -402,15 +402,15 @@ Each milestone ends with a part of the language test cases passing.
 
 |#|Milestone|Done when|
 |---|---|---|
-|1|Lexer and parser|all cases with codes E01xx pass; every valid case parses without diagnostics; "never panics" test is green|
+|1|Lexer and parser|the whole grammar of the specification §4, services and errors included; all cases with codes E01xx pass; every valid case parses without diagnostics; "never panics" test is green (ADR-0005)|
 |2|Resolve, expand, views, check|the whole `diagnostics/` part of the language test cases passes, except the capability cases in `pending/`|
 |3|IR|every valid case has a reviewed snapshot that validates against the schema; `linca ir` works|
 |4|Plugins|`linca.toml`, manifests, plugin runner and file writing work with two reference generators; the `pending/` cases pass|
-|5|Services|lexer, parser and resolution accept `service`, `error` and `throws`; phase 8 reports E0801–E0808 and E0810–E0815; every case that uses services passes; the IR has service and error nodes and every snapshot of these cases validates against the schema|
+|5|Services|phases 4–7 stop skipping service and error declarations and resolve them; phase 8 reports E0801–E0808 and E0810–E0815; every case that uses services passes; the IR has service and error nodes and every snapshot of these cases validates against the schema|
 
 Milestone 2 is the largest. Milestones 1–3 need no plugin protocol; the protocol has to be written before milestone 4.
 
-Services are the last milestone. The cases that use services belong to milestone 5 and are left out of milestones 1–4: everything under `valid/17_services/`, the project `projects/shop_example` with its `api.linca`, and every other case whose files use `service`, `error` or `throws`.
+Services are the last milestone for checking, not for parsing. In milestones 1–4 the parser accepts `service`, `error` and `throws`, and phases 4–7 skip service and error declarations through one filter that milestone 5 removes (ADR-0005). Until then the valid cases that use services (everything under `valid/17_services/`, the project `projects/shop_example` with its `api.linca`) only prove that they parse. Cases that expect a diagnostic reported on a service or an error declaration, the §17 codes among them, belong to milestone 5 and are left out of milestones 2–4. E0104 on an operation name is reported by the parser and belongs to milestone 1.
 
 ---
 
