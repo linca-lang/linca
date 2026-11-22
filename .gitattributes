@@ -1,1 +1,8 @@
+# LF everywhere, also on Windows checkouts.
+# - Spans in diagnostics and the IR count bytes and lines; CRLF in a test file would move them.
+# - guard.sh fails under sh with CRLF line endings.
+# - IR snapshots must be byte-identical on every platform.
 * text=auto eol=lf
+
+*.png binary
+*.jpg binary
