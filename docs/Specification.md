@@ -695,6 +695,8 @@ The checker runs after parsing, in this order:
 7. Service checks: signatures, errors, the HTTP binding.
 8. Target capability checks against configured plugins.
 
+A node that has an error is not examined by later checks, warnings included. The node is the smallest item the error is reported on: for E0104 it is the name, so a keyword used as a declaration name gets no W0001 (ADR-0004); for a bad attribute argument it is that argument, so the rest of the field is still checked.
+
 The IR is built only if there are no errors.
 
 ---
@@ -882,6 +884,7 @@ Decided in this draft:
 - A parameter of an attribute declaration may be named like a keyword, as an argument and an operation parameter may ([[#3.3 Keywords]], ADR-0002).
 - Declaration-level attributes are always written before the declaration, including `type`; attribute sets use brackets ([[#4. Grammar]]).
 - A string literal cannot span lines; a raw line break inside it is E0102 ([[#3.4 Literals]], ADR-0003).
+- A node with an error is not checked again by later checks, warnings included; this is why a name with E0104 gets no W0001 ([[#11. Semantic checks (summary)]], ADR-0004).
 - Nullability and presence are separate properties; `partial` changes only presence ([[#5.3 Optionality]]).
 - The back-relation is required, and generators never invent relation fields ([[#8. Relations]]).
 - A union states required mixins with `requires`, not `with` ([[#6.5 `union`]]).

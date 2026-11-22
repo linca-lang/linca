@@ -116,12 +116,12 @@ Each phase lists what it reads, what it produces and which diagnostics of [[Spec
 - Hand-written recursive descent with at most two tokens of lookahead.
 - Produces an AST for the module, even when the module has syntax errors.
 - Parses the declarations `service` and `error`. A service holds operations and an operation holds parameters; an operation starts with `@` or with a name followed by `(`, so two tokens of lookahead are enough ([[Specification#4. Grammar]]).
-- Reports E0103–E0106.
+- Reports E0103–E0106, including E0104 for a keyword used as a name (ADR-0004). The name is marked poisoned.
 - Recovery is described in [[#5.12 Error recovery]].
 
 ### 5.4 Resolve names
 
-- Builds the table of declarations of every module (E0701, E0703, E0104 for names), and the tables of operations of every service and of parameters of every operation (E0801, E0802, E0104 for operation names).
+- Builds the table of declarations of every module (E0701, E0703), and the tables of operations of every service and of parameters of every operation (E0801, E0802).
 - Processes imports (E0704, E0705, E0702).
 - Resolves every type name, every name after `throws` and every attribute name to a declaration (E0201, E0401; W0401 for an attribute of a plugin that is not configured).
 - Output: every reference in the schema points at a declaration id or is marked unresolved.
@@ -190,7 +190,7 @@ The aim is that one mistake produces one diagnostic and does not hide the next m
 - *At file level* the parser skips to the next token that can start a declaration: `import`, `@`, or a declaration keyword followed by an identifier.
 - *In argument lists and brackets* it synchronizes on `,` and on the closing bracket.
 
-**After parsing:** a node that is wrong is marked *poisoned*. Later phases skip poisoned nodes and anything that depends on them, instead of reporting consequences. An unknown type does not also produce a type mismatch; a field with a bad attribute is still expanded and checked for everything else.
+**After parsing:** a node that is wrong is marked *poisoned*. Later phases skip poisoned nodes and anything that depends on them, instead of reporting consequences, warnings included. The poisoned node is the smallest item the error is reported on; a name with E0104 gets no W0001 (ADR-0004). An unknown type does not also produce a type mismatch; a field with a bad attribute is still expanded and checked for everything else.
 
 **Limits.** At most 100 diagnostics are reported per run; the summary says how many were suppressed. Limit is configurable.
 
