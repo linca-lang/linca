@@ -1,0 +1,9 @@
+// Linca test case | spec 0.1 | section 3.4
+// A string literal cannot contain a raw line break (ADR-0003).
+
+attribute label(text: String) on field
+
+record Note {
+  title: String @label("open    //~ E0102
+  )
+}

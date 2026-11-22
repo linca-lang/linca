@@ -98,6 +98,8 @@ null    = "null" ;
 list    = "[" [ literal { "," literal } [ "," ] ] "]" ;
 ```
 
+A string MUST NOT contain a raw line break (LF or CR LF); write the escape sequence backslash-n instead. A line break before the closing quote is E0102 with the primary span starting at the opening quote; the string ends there and lexing resumes on the next line (ADR-0003).
+
 How a literal is checked against a type is defined in [[#7.7 Argument values]].
 
 ### 3.5 Punctuation
@@ -879,6 +881,7 @@ Decided in this draft:
 - Default generators are built-in markers, not functions ([[#7.6 Value generators]]).
 - A parameter of an attribute declaration may be named like a keyword, as an argument and an operation parameter may ([[#3.3 Keywords]], ADR-0002).
 - Declaration-level attributes are always written before the declaration, including `type`; attribute sets use brackets ([[#4. Grammar]]).
+- A string literal cannot span lines; a raw line break inside it is E0102 ([[#3.4 Literals]], ADR-0003).
 - Nullability and presence are separate properties; `partial` changes only presence ([[#5.3 Optionality]]).
 - The back-relation is required, and generators never invent relation fields ([[#8. Relations]]).
 - A union states required mixins with `requires`, not `with` ([[#6.5 `union`]]).
